@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 import Swal from 'sweetalert2';
+import { Globals } from '../globals';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +14,12 @@ import Swal from 'sweetalert2';
 export class UsuariosComponent implements OnInit {
 
   usuarios : Usuario[];
-  constructor(private usuarioService : UsuarioService) { }
+  constructor(private usuarioService : UsuarioService, private globals : Globals,private router: Router) { }
 
   ngOnInit(): void {
+    if(!this.globals.loggeado){
+      this.router.navigate(['/Login'])
+    }else
     this.usuarioService.findAll().subscribe(
       (usuario) => {
         this.usuarios = usuario;

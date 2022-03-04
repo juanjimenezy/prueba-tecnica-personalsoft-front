@@ -3,6 +3,7 @@ import { UsuarioService } from './usuario.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from './usuario';
 import Swal from 'sweetalert2';
+import { Globals } from '../globals';
 
 
 @Component({
@@ -14,9 +15,12 @@ export class FormComponent implements OnInit {
 
 
   public usuario : Usuario = new Usuario();
-  constructor(private usuarioService : UsuarioService, private router: Router,private activateRoute: ActivatedRoute) { }
+  constructor(private usuarioService : UsuarioService, private router: Router,private activateRoute: ActivatedRoute, private globals : Globals) { }
 
   ngOnInit(): void {
+    if(!this.globals.loggeado){
+      this.router.navigate(['/Login'])
+    }else
     this.cargarUsuario();
   }
 
