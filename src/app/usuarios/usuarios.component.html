@@ -26,12 +26,12 @@
                 <td>
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-primary"
-                            [routerLink]="['/Articulos/form',usuario.id]">Editar</button>
+                            [routerLink]="['form/',usuario.id]">Editar</button>
                     </div>
                 </td>
                 <td>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-danger" >Eliminar</button>
+                        <button class="btn btn-danger" (click)="delete(usuario)">Eliminar</button>
                     </div>
                 </td>
             </tr>

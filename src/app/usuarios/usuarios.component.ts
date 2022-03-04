@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,6 +20,42 @@ export class UsuariosComponent implements OnInit {
         this.usuarios = usuario;
       }
     );
+  }
+
+
+  delete( usuario : Usuario){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+    title: 'Esta seguro?',
+    text: `¿Seguro que desea eliminar al usuario ${usuario.nombre}`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, eliminar!',
+    cancelButtonText: 'No, cancelar!',
+    reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuarioService.delete(usuario.id).subscribe(
+          response => {
+            this.usuarios = this.usuarios.filter(usu => usu !== usuario)
+            swalWithBootstrapButtons.fire(
+              'Eliminado!',
+              `${usuario.nombre} ${usuario.apellido} Ha sido eliminado`,
+              'success'
+            )
+          }
+        )
+
+      }
+})
+
   }
 
 }

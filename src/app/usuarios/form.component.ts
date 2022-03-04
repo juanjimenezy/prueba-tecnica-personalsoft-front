@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from './usuario.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Usuario } from './usuario';
+
 
 @Component({
   selector: 'app-form',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  vUsuario : Usuario;
+
+  constructor(private usuarioService : UsuarioService, private router: Router,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
+
+
+
+  cargarUsuario(): void {
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id']
+      if(id){
+        this.usuarioService.findById(id).subscribe((user) => this.vUsuario = user)
+      }
+    })
+
+  }
+
 
 }

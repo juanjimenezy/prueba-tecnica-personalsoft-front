@@ -32,4 +32,18 @@ export class UsuarioService {
       })
     );
   }
+
+  findById(id : number) : Observable<Usuario> {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    return this.http.get<Usuario>(`${this.globals.urlUsuarios}`,{params : params})
+  }
+
+
+  delete(id : number) {
+    let params = new HttpParams();
+    params = params.append('id', id);
+    return this.http.delete(`${this.globals.urlUsuarios}`,{params : params});
+  }
+
 }
