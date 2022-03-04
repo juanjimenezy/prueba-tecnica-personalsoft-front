@@ -23,6 +23,16 @@ export class UsuarioService {
     );
   };
 
+  update(usuario : Usuario) : Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.globals.urlUsuarios}`,usuario).pipe(
+      catchError(e =>{
+        console.error(e.error.mensaje);
+        Swal.fire('Error' , e.error.mensaje,'error');
+        return  throwError(e);
+      })
+    );
+  };
+
   findAll() : Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.globals.urlUsuarios}`).pipe(
       catchError(e =>{

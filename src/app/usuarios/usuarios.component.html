@@ -17,12 +17,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let usuario of usuarios">
-                <td scope="row">{{usuario.id}}</td>
-                <td scope="row">{{usuario.nombre}}</td>
-                <td scope="row">{{usuario.apellido}}</td>
-                <td scope="row">{{usuario.fechaNacimiento}}</td>
-                <td scope="row">{{usuario.estadoCivil}}</td>
-                <td scope="row">{{usuario.hermanos}}</td>
+                <td scope="row" class="text-center">{{usuario.id}}</td>
+                <td scope="row" class="text-center" class="text-center">{{usuario.nombre}}</td>
+                <td scope="row" class="text-center">{{usuario.apellido}}</td>
+                <td scope="row" class="text-center">{{usuario.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
+                <td scope="row" class="text-center">{{usuario.estadoCivil}}</td>
+                <td scope="row" class="text-center">{{usuario.hermanos}}</td>
                 <td>
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-primary"
