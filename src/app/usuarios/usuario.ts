@@ -7,6 +7,6 @@ export class Usuario {
     apellido : string;
     fechaNacimiento : Date;
     estadoCivil : string;
-    hermanos : boolean;
+    hermanos : any;
     
 }

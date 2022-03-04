@@ -35,8 +35,8 @@ export class UsuarioService {
 
   findById(id : number) : Observable<Usuario> {
     let params = new HttpParams();
-    params = params.append('id', id);
-    return this.http.get<Usuario>(`${this.globals.urlUsuarios}`,{params : params})
+    params = params.append('idUsuario', id);
+    return this.http.get<Usuario>(`${this.globals.urlUsuarios}ById`,{params : params})
   }
 
 

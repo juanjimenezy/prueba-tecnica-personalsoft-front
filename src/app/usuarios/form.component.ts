@@ -11,24 +11,30 @@ import { Usuario } from './usuario';
 })
 export class FormComponent implements OnInit {
 
-  vUsuario : Usuario;
-
-  constructor(private usuarioService : UsuarioService, private router: Router,private activatedRoute: ActivatedRoute) { }
+  public usuario : Usuario = new Usuario();
+  constructor(private usuarioService : UsuarioService, private router: Router,private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cargarUsuario();
   }
 
-
-
-  cargarUsuario(): void {
-    this.activatedRoute.params.subscribe(params => {
+  cargarUsuario() {
+    this.activateRoute.params.subscribe(params => {
       let id = params['id']
-      if(id){
-        this.usuarioService.findById(id).subscribe((user) => this.vUsuario = user)
-      }
-    })
+      if (id) {
+        this.usuarioService.findById(id).subscribe(
+          (user) => {
+            this.usuario = user;
+            
 
+          }
+        )
+      }
+    }
+    )
   }
+
+
 
 
 }
