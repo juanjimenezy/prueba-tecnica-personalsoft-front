@@ -21,7 +21,9 @@
                 <td scope="row" class="text-center" class="text-center">{{usuario.nombre}}</td>
                 <td scope="row" class="text-center">{{usuario.apellido}}</td>
                 <td scope="row" class="text-center">{{usuario.fechaNacimiento | date:'dd-MM-yyyy'}}</td>
-                <td scope="row" class="text-center">{{usuario.estadoCivil}}</td>
+
+                <td scope="row" class="text-center">{{usuario.estadoCivil ? 'S' : 'Soltero'}}</td>
+
                 <td scope="row" class="text-center">{{usuario.hermanos}}</td>
                 <td>
                     <div class="d-flex justify-content-center">
