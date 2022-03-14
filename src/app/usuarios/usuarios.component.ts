@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class UsuariosComponent implements OnInit {
 
-  usuarios : Usuario[];
+  public usuarios : Usuario[];
   constructor(private usuarioService : UsuarioService, private globals : Globals,private router: Router) { }
 
   ngOnInit(): void {
